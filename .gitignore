@@ -1,0 +1,20 @@
+# IDE & System Related Files #
+.buildpath
+.project
+.settings
+.DS_Store
+.idea
+.externalToolBuilders
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+.sass-cache
+.nova
+
+# Local Files #
+/build
+/output
+output-web-root/
+output-web-root2/

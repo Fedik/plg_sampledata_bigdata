@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="sampledata" method="upgrade">
+	<name>plg_sampledata_bigdata</name>
+	<author>Fedir Zinchuk</author>
+	<creationDate>2024-09</creationDate>
+	<copyright>(C) 2024 Fedir Zinchuk</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>getthesite@gmail.com</authorEmail>
+	<version>1.0.0</version>
+	<description>PLG_SAMPLEDATA_BIGDATA_XML_DESCRIPTION</description>
+	<namespace path="src">Fedik\Plugin\SampleData\Bigdata</namespace>
+	<files>
+		<folder plugin="bigdata">services</folder>
+		<folder>language</folder>
+		<folder>src</folder>
+	</files>
+</extension>
