@@ -6,7 +6,7 @@
 	<copyright>(C) 2024 Fedir Zinchuk</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>getthesite@gmail.com</authorEmail>
-	<version>1.0.0</version>
+	<version>__BUILD_VERSION__</version>
 	<description>PLG_SAMPLEDATA_BIGDATA_XML_DESCRIPTION</description>
 	<namespace path="src">Fedik\Plugin\SampleData\Bigdata</namespace>
 	<files>

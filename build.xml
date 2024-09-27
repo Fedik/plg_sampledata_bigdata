@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="plg_sampledata_bigdata" default="" basedir=".">
+	<tstamp />
+
+	<property file="build.properties" />
+
+	<exec outputProperty="githash" dir="${project.basedir}" executable="git">
+		<arg value="rev-parse"/>
+		<arg value="--short"/>
+		<arg value="HEAD"/>
+	</exec>
+
+	<!-- Set build version -->
+	<target name="set_version" depends="">
+		<reflexive>
+			<fileset dir="${buildpath}">
+				<include name="*.xml" />
+				<include name="**/*.xml" />
+			</fileset>
+			<filterchain>
+				<replaceregexp>
+					<regexp
+						pattern="__BUILD_VERSION__"
+						replace="${version}" />
+				</replaceregexp>
+			</filterchain>
+		</reflexive>
+	</target>
+
+	<!-- Set build version with last commit hash -->
+	<target name="set_version_with_hash" depends="">
+		<reflexive>
+			<fileset dir="${buildpath}">
+				<include name="*.xml" />
+				<include name="**/*.xml" />
+			</fileset>
+			<filterchain>
+				<replaceregexp>
+					<regexp
+						pattern="__BUILD_VERSION__"
+						replace="${version} / ${githash}" />
+				</replaceregexp>
+			</filterchain>
+		</reflexive>
+	</target>
+
+	<!-- To archive -->
+	<target name="build_archive">
+		<echo message="Pack archive: ${package}_${version}_${githash}_${DSTAMP}_${TSTAMP}.zip ..." />
+
+		<mkdir dir="${destination}" />
+		<zip destfile="${destination}/${package}_${version}_${githash}_${DSTAMP}_${TSTAMP}.zip" >
+			<fileset dir="${buildpath}">
+				<include name="**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<!-- Prepare build path -->
+	<target name="cleanup_build_path">
+		<echo msg="Clean up build folder ..." />
+
+		<delete includeemptydirs="true">
+			<fileset dir="${buildpath}">
+				<include name="**/**" />
+				<include name="*" />
+				<exclude name=".gitkeep" />
+			</fileset>
+		</delete>
+
+		<mkdir dir="${buildpath}" />
+	</target>
+
+	<!-- Copy file to build -->
+	<target name="collect_files">
+		<echo msg="Prepare build folder ..." />
+		<mkdir dir="${buildpath}" />
+
+		<echo msg="Collect the files ..." />
+		<copy todir="${buildpath}">
+			<fileset dir="${project.basedir}">
+				<include name="**/**" />
+				<include name="*" />
+				<exclude name=".*" />
+				<exclude name=".**" />
+				<exclude name="output-*" />
+				<exclude name="output/**" />
+				<exclude name="build/**" />
+				<exclude name="build.properties" />
+				<exclude name="build.xml" />
+				<exclude name="doc/**" />
+				<exclude name="**/composer.json" />
+				<exclude name="**/composer.lock" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Build release -->
+	<target name="build_release" depends="cleanup_build_path">
+		<echo message="Build ${package} ${version} (${githash})..." />
+
+		<phingcall target="collect_files" />
+		<phingcall target="set_version_with_hash" />
+		<phingcall target="build_archive" />
+	</target>
+
+	<!-- Install to server -->
+	<target name="build_install">
+		<echo message="Installing ${package} ${version} (${githash})..." />
+
+		<phingcall target="collect_files" />
+
+		<echo message="Install Plugin..." />
+		<copy todir="${serverpath}/plugins/sampledata/bigdata">
+			<fileset dir="${buildpath}">
+				<include name="**" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>
+
+
