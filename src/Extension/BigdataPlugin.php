@@ -19,8 +19,6 @@ use Joomla\Event\SubscriberInterface;
 
 /**
  * Bigdata - Testing Plugin
- *
- * @since  __DEPLOY_VERSION__
  */
 final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
 {
@@ -30,8 +28,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * Amount of steps this plugin will run.
      *
      * @var int
-     *
-     * @since   __DEPLOY_VERSION__
      */
     protected static $steps = 221;
 
@@ -39,8 +35,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * Whether create the menu for Category and for every Article.
      *
      * @var bool
-     *
-     * @since   __DEPLOY_VERSION__
      */
     protected  $createMenu = false;
 
@@ -48,8 +42,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * Whether create the custom fields for Articles.
      *
      * @var bool
-     *
-     * @since   __DEPLOY_VERSION__
      */
     protected  $createFields = true;
 
@@ -57,8 +49,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * Lorem ipsum dolor sit amet.
      *
      * @var string
-     *
-     * @since   __DEPLOY_VERSION__
      */
     protected $lorem = '';
 
@@ -66,8 +56,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * Returns an array of events this subscriber will listen to.
      *
      * @return  array
-     *
-     * @since   __DEPLOY_VERSION__
      */
     public static function getSubscribedEvents(): array
     {
@@ -90,8 +78,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @param  \Joomla\Event\Event  $event  Event instance
      *
      * @return  void
-     *
-     * @since  __DEPLOY_VERSION__
      */
     public function onSampledataGetOverview(\Joomla\Event\Event $event): void
     {
@@ -113,8 +99,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @param  AjaxEvent  $event  Event instance
      *
      * @return void
-     *
-     * @since  __DEPLOY_VERSION__
      */
     public function onAjaxSampledataApplyStep(AjaxEvent $event): void
     {
@@ -250,8 +234,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @return  array  IDs of the inserted categories.
      *
      * @throws  \Exception
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function addCategories(array $categories, string $extension): array
     {
@@ -287,8 +269,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @return  array[]  Array of the inserted items, id => article
      *
      * @throws  \Exception
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function addArticles(array $articles): array
     {
@@ -347,8 +327,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @return  array[]  Array of the inserted items, id => item
      *
      * @throws  \Exception
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function addFields(array $fields): array
     {
@@ -399,8 +377,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @return  array  Menutypes of the inserted items: id => menutype
      *
      * @throws  \Exception
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function addMenus(array $menus): array
     {
@@ -433,8 +409,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @return  array  Ids of the inserted items.
      *
      * @throws  \Exception
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function addMenuItems(array $menuItems): array
     {
@@ -474,8 +448,6 @@ final class BigdataPlugin extends CMSPlugin implements SubscriberInterface
      * @param array $item  Content item
      *
      * @return  array
-     *
-     * @since  __DEPLOY_VERSION__
      */
     protected function checkDefaultValues(array $item): array
     {
